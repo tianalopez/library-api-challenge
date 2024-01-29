@@ -12,6 +12,7 @@ class User(db.Model):
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
     # relationships
+    books = db.relationship("Book", back_populates="users")
 
     # association
 
