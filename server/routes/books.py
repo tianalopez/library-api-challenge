@@ -13,6 +13,7 @@ class Books(Resource):
         return books, 200
 
     def post(self):
+        #receive the ISBN from the frontend
         try:
             data = request.json
             # validate data
