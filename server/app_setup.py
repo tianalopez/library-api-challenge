@@ -4,8 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api
 from flask_marshmallow import Marshmallow
 from dotenv import load_dotenv
-from flask_jwt_extended import JWTManager
-from datetime import timedelta
 
 load_dotenv()
 # Local imports
