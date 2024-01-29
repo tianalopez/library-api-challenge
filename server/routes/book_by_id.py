@@ -1,4 +1,4 @@
-from . import request, Resource
+from . import Resource
 from models.book import Book
 from schemas.book_schema import BookSchema
 from app_setup import db
