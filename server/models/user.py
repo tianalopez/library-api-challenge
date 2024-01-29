@@ -1,5 +1,4 @@
 from app_setup import db
-from sqlalchemy.ext.associationproxy import association_proxy
 
 
 class User(db.Model):

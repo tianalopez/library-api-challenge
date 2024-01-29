@@ -1,8 +1,5 @@
 from sqlalchemy.orm import validates
-import re
-from app_setup import db, timedelta
-from sqlalchemy.ext.hybrid import hybrid_property
-from sqlalchemy.ext.associationproxy import association_proxy
+from app_setup import db
 
 # , server_default=db.func.now() + timedelta(weeks=2)
 
@@ -28,9 +25,11 @@ class Book(db.Model):
     @validates("ISBN")
     def validate_ISBN(self, _, value):
         if not isinstance(value, int):
-            raise TypeError("Input must be a string")
-        elif len(value) is not 13:
+            raise TypeError("Input must be a integer")
+        elif not len(str(value)) == 13:
             raise ValueError("ISBN Number must be 13 digits long")
+        elif not str(value).isdigit():
+            raise ValueError("ISBN Number must only container numeric characters")
         return value
 
 
