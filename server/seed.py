@@ -46,19 +46,19 @@ if __name__ == "__main__":
             Book(
                 ISBN=isbn,
                 checked_out=True,
-                due_date=datetime.now() + timedelta(weeks=2),
+                due_date=datetime.utcnow() + timedelta(weeks=2),
                 user_id=2,
             ),
             Book(
                 ISBN=int(fake.isbn13(separator="")),
                 checked_out=True,
-                due_date=datetime.now() + timedelta(weeks=2),
+                due_date=datetime.utcnow() + timedelta(weeks=2),
                 user_id=2,
             ),
             Book(
                 ISBN=int(fake.isbn13(separator="")),
                 checked_out=True,
-                due_date=datetime.now() - timedelta(weeks=1),
+                due_date=datetime.utcnow() - timedelta(weeks=1),
                 user_id=3,
             ),
         ]

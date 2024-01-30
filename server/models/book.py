@@ -1,5 +1,6 @@
 from sqlalchemy.orm import validates
 from app_setup import db
+from datetime import datetime
 
 
 class Book(db.Model):
@@ -11,8 +12,8 @@ class Book(db.Model):
     checked_out = db.Column(db.Boolean, default=False)
     due_date = db.Column(db.DateTime, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now(tz="UTC"))
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now(tz="UTC"))
 
     # relationships
     user = db.relationship("User", back_populates="books")

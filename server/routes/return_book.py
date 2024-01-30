@@ -10,9 +10,9 @@ book_schema = BookSchema(session=db.session)
 
 
 class ReturnBook(Resource):
-    #grab the book based on ISBN (could be done with the id)
-    def patch(self, ISBN, user_id):
-        if book := db.session.query(Book).filter_by(ISBN = ISBN, user_id=user_id,checked_out=True).first():
+    #grab the book based on id
+    def patch(self, id, user_id):
+        if book := db.session.query(Book).filter_by(id=id, user_id=user_id,checked_out=True).first():
             try:
                 #update the data
                 book.checked_out = False
