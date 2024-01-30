@@ -1,14 +1,10 @@
 from . import request, Resource
 from models.book import Book
-from models.user import User
 from schemas.book_schema import BookSchema
 from app_setup import db
 from datetime import datetime, timedelta
 
 book_schema = BookSchema(session=db.session)
-#!user can only have 3 checked out books
-#!user can have no overdue books
-# ~take the user_id, check if they have any overdue books, check how many books have been checked out
 
 
 class CheckoutBook(Resource):
@@ -47,10 +43,7 @@ class CheckoutBook(Resource):
             wanted_book.user_id = user_id
 
             db.session.commit()
-
-            return {
-                "message": f"The book with ISBN: {ISBN} has been successfully checked out"
-            }, 200
+            return book_schema.dump(wanted_book), 200
 
         except Exception as e:
             db.session.rollback()
