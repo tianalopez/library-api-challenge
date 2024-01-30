@@ -15,4 +15,5 @@ class BookSchema(ma.SQLAlchemySchema):
             "user_id",
         ]
 
-    # ISBN = fields.Integer(required=True, )
+    due_date = fields.String(required=False, allow_none=True)
+    user_id = fields.Integer(required=False, allow_none=True)

@@ -2,6 +2,7 @@ from . import request, Resource
 from models.book import Book
 from schemas.book_schema import BookSchema
 from app_setup import db
+from decorators import require_librarian
 
 book_schema = BookSchema(session=db.session)
 books_schema = BookSchema(many=True, session=db.session)
@@ -12,6 +13,7 @@ class Books(Resource):
         books = books_schema.dump(Book.query)
         return books, 200
 
+    @require_librarian
     def post(self):
         #receive the ISBN from the frontend
         try:

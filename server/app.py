@@ -4,6 +4,7 @@
 
 # Local imports
 from app_setup import app, db, ma, api
+from flask import request, abort
 
 # Route imports
 from routes.book_by_id import BookById
@@ -21,7 +22,10 @@ api.add_resource(OverdueBooks, "/books/overdue")
 api.add_resource(Users, "/users")
 api.add_resource(CheckoutBook, "/users/<int:id>/checkout")
 api.add_resource(ReturnBook, "/users/<int:id>/return")
-api.add_resource(CheckedOutBooks, "users/<int:id>/checkedout")
+api.add_resource(CheckedOutBooks, "/users/<int:id>/checkedout")
+
+
+
 
 
 @app.route("/")
