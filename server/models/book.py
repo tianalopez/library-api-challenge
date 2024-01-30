@@ -18,8 +18,6 @@ class Book(db.Model):
     # relationships
     user = db.relationship("User", back_populates="books")
 
-    # association
-
     # validations
     @validates("ISBN")
     def validate_ISBN(self, _, value):

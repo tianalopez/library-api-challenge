@@ -11,5 +11,3 @@ class Users(Resource):
     def get(self):
         users = users_schema.dump(User.query)
         return users, 200
-
-    ##separate authentication route for POST
