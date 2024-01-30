@@ -6,8 +6,6 @@ from app_setup import db
 from datetime import datetime
 
 book_schema = BookSchema(session=db.session)
-#!updates the checked_out status to False, updates the due_date to null, updates user_id to null
-
 
 class ReturnBook(Resource):
     #grab the book based on id

@@ -13,9 +13,5 @@ class User(db.Model):
     # relationships
     books = db.relationship("Book", back_populates="user")
 
-    # association
-
-    # validations
-
     def __repr__(self):
         return f"<User #{self.id} {self.username} />"
