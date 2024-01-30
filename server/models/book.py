@@ -1,8 +1,6 @@
 from sqlalchemy.orm import validates
 from app_setup import db
 
-# , server_default=db.func.now() + timedelta(weeks=2)
-
 
 class Book(db.Model):
     __tablename__ = "books"
@@ -31,7 +29,6 @@ class Book(db.Model):
         elif not str(value).isdigit():
             raise ValueError("ISBN Number must only container numeric characters")
         return value
-
 
     def __repr__(self):
         return f"<Book #{self.id} {self.ISBN} />"
