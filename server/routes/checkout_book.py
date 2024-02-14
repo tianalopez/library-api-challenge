@@ -3,6 +3,8 @@ from models.book import Book
 from schemas.book_schema import BookSchema
 from app_setup import db
 from datetime import datetime, timedelta
+#alternative approach
+from models.user import User
 
 book_schema = BookSchema(session=db.session)
 
@@ -24,6 +26,11 @@ class CheckoutBook(Resource):
                 .filter_by(user_id=user_id, checked_out=True)
                 .all()
             )
+            #~Alternative way
+            user = db.session.query(User).get(user_id)
+            checked_out = user.books.filter_by(checked_out=True).all()
+
+
             # check if the user has already checked out 3 books
             if len(checked_out_books) >= 3:
                 return {"message": "You can only have 3 books checked out at once"}, 400
